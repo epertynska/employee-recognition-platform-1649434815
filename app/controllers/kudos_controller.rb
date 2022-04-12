@@ -31,17 +31,22 @@ class KudosController < ApplicationController
 
   # PATCH/PUT /kudos/1
   def update
-    if @kudo.update(kudo_params)
-      redirect_to @kudo, notice: 'Kudo was successfully updated.'
+    if @kudo.giver == current_employee
+      if @kudo.update(kudo_params)
+        redirect_to @kudo, notice: 'Kudo was successfully updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
-    end
+      "You can't edit this Kudo"
   end
 
   # DELETE /kudos/1
   def destroy
-    @kudo.destroy
-    redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
+    if @kudo.giver == current_employee
+      kudo.destroy
+      redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
+    end
   end
 
   private

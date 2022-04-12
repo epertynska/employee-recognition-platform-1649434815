@@ -20,5 +20,7 @@
   <%= @kudo.receiver.email %>
 </p>
 
-<%= link_to 'Edit', edit_kudo_path(@kudo) %> |
+<% if @kudo.giver.id == current_employee.id %>
+  <%= link_to 'Edit', edit_kudo_path(@kudo) %> |
+<% end %>
 <%= link_to 'Back', kudos_path %>
