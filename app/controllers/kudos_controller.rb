@@ -39,7 +39,6 @@ class KudosController < ApplicationController
       end
     else
       "You can't edit this Kudo"
-    end
   end
 
   # DELETE /kudos/1
