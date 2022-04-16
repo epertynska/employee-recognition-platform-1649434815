@@ -15,7 +15,9 @@ class KudosController < ApplicationController
   end
 
   # GET /kudos/1/edit
-  def edit; end
+  def edit; 
+
+  end
 
   # POST /kudos
   def create
@@ -37,8 +39,7 @@ class KudosController < ApplicationController
       else
         render :edit
       end
-    else
-      "You can't edit this Kudo"
+    end
   end
 
   # DELETE /kudos/1

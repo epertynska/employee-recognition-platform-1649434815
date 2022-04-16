@@ -1,6 +1,9 @@
 <h1>Editing Kudo</h1>
-
-<%= render 'form', kudo: @kudo %>
-
+<%if @kudo.giver == current_employee%>
+    <%= render 'form', kudo: @kudo %>
+<%else%>
+    <%= "You can't edit this Kudo and you shouldn't even be here!"%>
+<%end%>
+</br></br>
 <%= link_to 'Show', @kudo %> |
-<%= link_to 'Back', kudos_path %>
+<%= link_to 'Back to the list', kudos_path %>
