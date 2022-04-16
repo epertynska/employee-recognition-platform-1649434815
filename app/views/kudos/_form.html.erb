@@ -27,6 +27,8 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%if @kudo.giver == current_employee%>
+      <%= form.submit %>
+    <%end%>
   </div>
 <% end %>

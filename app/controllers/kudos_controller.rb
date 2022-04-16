@@ -38,7 +38,8 @@ class KudosController < ApplicationController
         render :edit
       end
     else
-      "You can't edit this Kudo"
+      'You are not allowed to edit this Kudo.'
+    end
   end
 
   # DELETE /kudos/1
@@ -46,6 +47,8 @@ class KudosController < ApplicationController
     if @kudo.giver == current_employee
       kudo.destroy
       redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
+    else
+      'You have no right to delete this Kudo.'
     end
   end
 
