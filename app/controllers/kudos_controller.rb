@@ -15,9 +15,7 @@ class KudosController < ApplicationController
   end
 
   # GET /kudos/1/edit
-  def edit; 
-
-  end
+  def edit; end
 
   # POST /kudos
   def create
@@ -39,6 +37,8 @@ class KudosController < ApplicationController
       else
         render :edit
       end
+    else
+      'You are not allowed to edit this Kudo.'
     end
   end
 
@@ -47,6 +47,8 @@ class KudosController < ApplicationController
     if @kudo.giver == current_employee
       kudo.destroy
       redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
+    else
+      'You have no right to delete this Kudo.'
     end
   end
 
