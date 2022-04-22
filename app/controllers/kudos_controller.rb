@@ -38,7 +38,7 @@ class KudosController < ApplicationController
         render :edit
       end
     else
-      "You can't edit this Kudo"
+      'You are not allowed to edit this Kudo.'
     end
   end
 
