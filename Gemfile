@@ -18,6 +18,7 @@ gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'annotate'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'net-smtp'
 
@@ -28,7 +29,10 @@ group :development, :test do
   gem 'rubocop-rails', '2.13.2'
   gem 'rubocop-rspec', '2.8.0'
   # Tests
+  gem 'capybara', '~> 3.36'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'selenium-webdriver'
 end
 
 group :development do
