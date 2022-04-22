@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_112626) do
+ActiveRecord::Schema.define(version: 2022_04_12_154253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2022_04_12_112626) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "employees_roles", id: false, force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "role_id"
+    t.index ["employee_id", "role_id"], name: "index_employees_roles_on_employee_id_and_role_id"
+    t.index ["employee_id"], name: "index_employees_roles_on_employee_id"
+    t.index ["role_id"], name: "index_employees_roles_on_role_id"
+  end
+
   create_table "kudos", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -36,6 +44,16 @@ ActiveRecord::Schema.define(version: 2022_04_12_112626) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["giver_id"], name: "index_kudos_on_giver_id"
     t.index ["receiver_id"], name: "index_kudos_on_receiver_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
   add_foreign_key "kudos", "employees", column: "giver_id"

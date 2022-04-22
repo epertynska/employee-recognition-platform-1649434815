@@ -44,12 +44,10 @@ class KudosController < ApplicationController
 
   # DELETE /kudos/1
   def destroy
-    if @kudo.giver == current_employee
-      kudo.destroy
-      redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
-    else
-      'You have no right to delete this Kudo.'
-    end
+    return unless @kudo.giver == current_employee
+
+    @kudo.destroy
+    redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
   end
 
   private

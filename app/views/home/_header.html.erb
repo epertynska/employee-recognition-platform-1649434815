@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-    <a class="navbar-brand" href="/home/index">The Employee Recognition App</a>
+    <a class="navbar-brand" href="/kudos">The Employee Recognition App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,13 +9,6 @@
         <li class="nav-item active">
             <a class="nav-link" href="/kudos">Kudos</a>
         </li>
-        <%# <li class="nav-item active">
-            <a class="nav-link" href="/kudos/create_kudo">Create new Kudo</a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="/kudos/your_kudos">Your Kudos</a>
-        </li>
-        </ul> %>
         <p class="navbar-text float-right">
         <% if employee_signed_in? %>
         Logged in as <strong><%= current_employee.email %></strong>.
