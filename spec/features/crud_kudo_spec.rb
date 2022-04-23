@@ -1,22 +1,19 @@
 require 'rails_helper'
-require 'capybara/rspec'
-require 'selenium-webdriver'
 
-RSpec.describe 'Create, update or remove Kudo test:', type: :feature do
+RSpec.describe 'Create, update or remove Kudo test:' do
   let(:employee) { build(:employee) }
 
   before do
     visit new_employee_registration_path
-  end
-
-  it 'CRUD' do
     fill_in 'Email', with: employee.email
     fill_in 'Password', with: employee.password
     fill_in 'Password confirmation', with: employee.password
     click_button 'Sign up'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
     expect(page).to have_current_path(root_path)
+  end
 
+  it 'CRUD' do
     expect(page).to have_content 'New Kudo'
     click_link 'New Kudo'
     fill_in 'Title', with: 'Title is here'
