@@ -9,8 +9,6 @@ RSpec.describe 'Create, update or remove Kudo test:' do
     fill_in 'Password', with: employee.password
     fill_in 'Password confirmation', with: employee.password
     click_button 'Sign up'
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
-    expect(page).to have_current_path(root_path)
   end
 
   it 'CRUD' do

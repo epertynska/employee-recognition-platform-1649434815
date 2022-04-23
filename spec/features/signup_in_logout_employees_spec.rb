@@ -16,7 +16,7 @@ describe 'Registration, log out/in' do
     expect(page).to have_current_path(root_path)
 
     click_link 'Logout'
-    
+
     fill_in 'Email', with: employee.email
     fill_in 'Password', with: employee.password
     click_button 'Log in'
