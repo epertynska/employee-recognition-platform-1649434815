@@ -1,9 +1,7 @@
 require 'rails_helper'
-require 'capybara/rspec'
 
-describe 'Registration, log out/in', type: :feature do
+describe 'Registration, log out/in' do
   let(:employee) { build(:employee) }
-  let(:same_employee) { create(:employee) }
 
   before do
     visit new_employee_registration_path
@@ -18,10 +16,11 @@ describe 'Registration, log out/in', type: :feature do
     expect(page).to have_current_path(root_path)
 
     click_link 'Logout'
+
     fill_in 'Email', with: employee.email
     fill_in 'Password', with: employee.password
     click_button 'Log in'
-    
+
     expect(page).to have_content 'Signed in successfully.'
     expect(page).to have_current_path(root_path)
   end
