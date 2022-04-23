@@ -16,6 +16,7 @@ RSpec.describe 'Create, update or remove Kudo test:' do
     click_link 'New Kudo'
     fill_in 'Title', with: 'Title is here'
     fill_in 'Content', with: 'Content is here'
+    expect(page).to have_content 'Kudo was successfully created.'
     click_button 'Create Kudo'
     expect(page).to have_content 'Kudo was successfully created.'
     expect(page).to have_content 'Kudos'
