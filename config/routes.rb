@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :admins
+  get 'pages/dashboard'
   resources :kudos
   devise_for :employees
   get 'home/index'
