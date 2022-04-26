@@ -14,12 +14,12 @@
   <tbody>
     <% @kudos.each do |kudo| %>
       <tr>
-        <td><%= kudo.title %></td>
-        <td><%= kudo.content %></td>
-        <td><%= kudo.giver.email %></td>
-        <td><%= kudo.receiver.email %></td>
+        <td><strong><%= kudo.title %></strong></td>
+        <td><i><%= kudo.content %></i></td>
+        <td><%= kudo.giver.email.split("@")[0].capitalize %></td>
+        <td><%= kudo.receiver.email.split("@")[0].capitalize %></td>
         <td><%= link_to 'Show', kudo %></td>
-        <% if kudo.giver.id == current_employee.id %>
+        <% if kudo.giver.id == current_employee.id || current_employee.admin? %>
           <td><%= link_to 'Edit', edit_kudo_path(kudo) %></td>
           <td><%= link_to 'Delete', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>

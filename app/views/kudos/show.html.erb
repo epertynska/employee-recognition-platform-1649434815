@@ -12,12 +12,12 @@
 
 <p>
   <strong>Giver:</strong>
-  <%= @kudo.giver.email %>
+  <%= @kudo.giver.email.split("@")[0].capitalize %>
 </p>
 
 <p>
   <strong>Receiver:</strong>
-  <%= @kudo.receiver.email %>
+  <%= @kudo.receiver.email.split("@")[0].capitalize %>
 </p>
 
 <% if @kudo.giver.id == current_employee.id %>
