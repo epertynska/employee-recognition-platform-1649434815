@@ -1,27 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe 'Create, update or remove Kudo test:' do
-  let(:employee1) { build(:employee) }
-  let(:employee2) { build(:employee) }
+RSpec.describe 'Create, update or remove Kudo test:', type: :system do
+  before do
+    driven_by(:rack_test)
+  end
+
+  let!(:employee1) { create(:employee) }
+  let!(:employee2) { create(:employee) }
+
+  before do
+    sign_in employee1, scope: :employee
+  end
 
   it 'CRUD' do
-    visit new_employee_registration_path
-    fill_in 'Email', with: employee1.email
-    fill_in 'Password', with: employee1.password
-    fill_in 'Password confirmation', with: employee1.password
-    click_button 'Sign up'
-    click_link 'Logout'
-    visit new_employee_registration_path
-    fill_in 'Email', with: employee2.email
-    fill_in 'Password', with: employee2.password
-    fill_in 'Password confirmation', with: employee2.password
-    click_button 'Sign up'
-
+    visit root_path
+    sign_in employee1, scope: :employee
     expect(page).to have_content 'New Kudo'
     click_link 'New Kudo'
     fill_in 'Title', with: 'Title is here'
     fill_in 'Content', with: 'Content is here'
-    select employee1.email, from: 'Receiver'
     click_button 'Create Kudo'
     expect(page).to have_content 'Kudo was successfully created.'
     expect(page).to have_content 'Kudos'
