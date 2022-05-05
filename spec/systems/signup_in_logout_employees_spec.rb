@@ -1,10 +1,6 @@
 require 'rails_helper'
 
-describe 'Registration, log out/in' do, type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-  
+describe 'Registration, log out/in', type: :system do
   let(:employee) { build(:employee) }
 
   before do

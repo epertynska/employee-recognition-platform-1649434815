@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin login' do
+RSpec.describe 'Employee - Admin login', type: :system do
   let(:employee) { build(:employee) }
 
   it '/admins page login' do

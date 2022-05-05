@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Create, update or remove Kudo test:', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   let!(:employee1) { create(:employee) }
   let!(:employee2) { create(:employee) }
 
@@ -14,7 +10,6 @@ RSpec.describe 'Create, update or remove Kudo test:', type: :system do
 
   it 'CRUD' do
     visit root_path
-    sign_in employee1, scope: :employee
     expect(page).to have_content 'New Kudo'
     click_link 'New Kudo'
     fill_in 'Title', with: 'Title is here'
